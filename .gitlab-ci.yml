@@ -1,0 +1,74 @@
+image: python:3.6
+variables:
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+
+stages:
+  - test
+  - pre-publish
+  - publish
+
+test:lint:
+  stage: test
+  script:
+    - pip install tox
+    - make lint
+
+test:code-formatter:
+  stage: test
+  script:
+    - pip install tox
+    - make code-formatter-check
+
+test:unit-tests:
+  stage: test
+  script:
+    - pip install tox
+    - make tests
+
+test:check-manifest:
+  stage: test
+  only:
+    - /^release/.*$/
+  script:
+    - pip install tox
+    - make check-manifest
+
+publish_package:staging:
+  stage: pre-publish
+  only:
+    - /^release/.*$/
+  variables:
+    TWINE_USERNAME: $PYPI_STAGING_USERNAME
+    TWINE_PASSWORD: $PYPI_STAGING_PASSWORD
+  script:
+    - pip install tox
+    - make pypi-check
+    - make pypi-upload -- --repository-url https://test.pypi.org/legacy/
+
+publish-package:production:
+  stage: publish
+  only:
+    - /^release/.*$/
+  variables:
+    TWINE_USERNAME: $PYPI_PRODUCTION_USERNAME
+    TWINE_PASSWORD: $PYPI_PRODUCTION_PASSWORD
+  script:
+    - pip install tox
+    - make pypi-check
+    - make pypi-upload
+
+publish-docker:
+  stage: publish
+  image: docker
+  before_script:
+    - apk add python3-dev
+    - python3 setup.py sdist
+  script:
+    - export VERSION_TAG=$(cat setup.py | grep version | head -1 | awk -F= '{ print $2 }' | sed 's/[",]//g' | tr -d "'")
+    - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_BUILD_TOKEN}
+    - docker build -t ${CI_REGISTRY_IMAGE}:latest -t ${CI_REGISTRY_IMAGE}:${VERSION_TAG}  .
+    - docker push ${CI_REGISTRY_IMAGE}:latest
+    - docker push ${CI_REGISTRY_IMAGE}:${VERSION_TAG}

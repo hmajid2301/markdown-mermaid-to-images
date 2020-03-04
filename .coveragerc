@@ -1,0 +1,15 @@
+[run]
+branch = True
+source =
+    markdown_mermaid_to_images
+
+
+[paths]
+source =
+   src/markdown_mermaid_to_images
+   .tox/*/lib/python*/site-packages/markdown_mermaid_to_images
+
+
+[report]
+show_missing = True
+precision = 2
