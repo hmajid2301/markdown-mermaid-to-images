@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="markdown-mermaid-to-images",
-    version="0.1.0 ",
+    version="0.1.0.post1",
     description="Exports mermaid diagrams in Markdown documents as images.",
     long_description=open("README.rst").read(),
     long_description_content_type="text/x-rst",
@@ -17,7 +17,7 @@ setup(
     packages=find_packages(where="src"),
     zip_safe=False,
     include_package_data=True,
-    install_requires=["click>=7.0"],
+    install_requires=["click>=7.0", "panflute>=1.12.5", "pypandoc>=1.4"],
     entry_points={"console_scripts": ["markdown_mermaid_to_images = markdown_mermaid_to_images.cli:cli"]},
     classifiers=[
         "Programming Language :: Python",
