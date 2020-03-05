@@ -1,11 +1,22 @@
-# prompt_example> make test PY=py35 OPTIONS="-- -s"
-.PHONY: test
-test:
-	@tox -e $(OPTIONS)
+
+PY=py37
+
+# prompt_example> make tests PY=py35 OPTIONS="-- -s"
+.PHONY: tests
+tests:
+	@tox -e $(PY) $(OPTIONS)
+
+.PHONY: coverage
+coverage:
+	@tox -e coverage
 
 .PHONY: install-venv
 install-venv:
 	@tox -e dev
+
+.PHONY: isort
+isort:
+	@tox -e isort
 
 .PHONY: lint
 lint:
@@ -13,11 +24,11 @@ lint:
 
 .PHONY: code-formatter
 code-formatter:
-	@tox -e code-formatter
+	@tox -e black
 
 .PHONY: code-formatter-check
 code-formatter-check:
-	@tox -e code-formatter -- --check
+	@tox -e black -- --check
 
 # prompt_example> make bumpversion OPTIONS="-- --allow-dirty patch"
 .PHONY: bumpversion
@@ -51,10 +62,6 @@ install-dev:
 .PHONY: build-dist
 build-dist:
 	@python setup.py sdist
-
-.PHONY: check-manifest
-check-manifest:
-	@tox -e check-manifest
 
 .PHONY: pypi-check
 pypi-check:

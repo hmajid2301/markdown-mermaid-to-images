@@ -1,0 +1,9 @@
+{
+  "name": "markdown-mermaid-to-images",
+  "scripts": {
+    "export_image": "mmdc"
+  },
+  "dependencies": {
+    "mermaid.cli": "0.5.1"
+  }
+}
