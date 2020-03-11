@@ -244,9 +244,14 @@ def export_mermaid_blocks(elem, doc, output):
 
         puppeteer = ""
         if os.path.isfile("/usr/bin/chromium-browser"):
-            puppeteer = "-p puppeteer.json"
+            puppeteer = "-p /data/puppeteer.json"
 
-        command = [f"npm run export_image -- -i input.mmd -o {output_path} {puppeteer}"]
+        mmdc = "mmdc"
+        mmdc_path = os.path.join(os.getcwd(), "node_modules", ".bin", "mmdc")
+        if os.path.isfile(mmdc_path):
+            mmdc = "npm run export_image --"
+
+        command = [f"{mmdc} -i input.mmd -o {output_path} {puppeteer}"]
         mermaid_output = subprocess.check_output(command, shell=True)
         logger.info(mermaid_output)
         os.remove("input.mmd")

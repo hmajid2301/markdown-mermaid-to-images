@@ -2,6 +2,7 @@ import shutil
 import subprocess
 
 import pytest
+
 from markdown_mermaid_to_images.cli import cli
 
 
@@ -39,10 +40,17 @@ def test_fail_args(runner, args, exit_code):
         ),
     ],
 )
-def test_success(helpers, runner, args):
+def test_success(mocker, helpers, runner, args):
+    uuid_return = [
+        mocker.MagicMock(hex="a18fcc0f6bf14950b5115b22752471cc"),
+        mocker.MagicMock(hex="7d2490309c1c4bf48069dd7399944ff4"),
+        mocker.MagicMock(hex="183db8116412491abb8ecc7871067dda"),
+    ]
+    mocker.patch("uuid.uuid4", side_effect=uuid_return)
     result = runner.invoke(cli, args)
     assert result.exit_code == 0
-    helpers.compare_and_remove_files_in_output()
+    helpers.compare_files()
+    helpers.remove_files_in_output()
 
 
 def test_fail_install_node_modules(mocker, helpers, runner):
@@ -54,11 +62,18 @@ def test_fail_install_node_modules(mocker, helpers, runner):
     assert result.exit_code == 1
 
 
-def test_success_install_node_modules(helpers, runner):
+def test_success_install_node_modules(mocker, helpers, runner):
+    uuid_return = [
+        mocker.MagicMock(hex="a18fcc0f6bf14950b5115b22752471cc"),
+        mocker.MagicMock(hex="7d2490309c1c4bf48069dd7399944ff4"),
+        mocker.MagicMock(hex="183db8116412491abb8ecc7871067dda"),
+    ]
+    mocker.patch("uuid.uuid4", side_effect=uuid_return)
     args = ["-m", "tests/data/example.md", "-o", "tests/data/output"]
     result = runner.invoke(cli, args)
     assert result.exit_code == 0
-    helpers.compare_and_remove_files_in_output()
+    helpers.compare_files()
+    helpers.remove_files_in_output()
 
 
 @pytest.mark.parametrize("exception", [subprocess.CalledProcessError(returncode=1, cmd=""), OSError])
