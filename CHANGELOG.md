@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.1.3] - 2020-03-11
+### Fixed
+- When running in Docker container, trims image this was due to version of chromium being installed (80) now using 72.
+
 ## [0.1.2] - 2020-03-11
 ### Added
 - Coverage job in `.gitlab-ci.yml`.
@@ -25,7 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial Release.
 
-[Unreleased]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.2...master
+[Unreleased]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.3...master
+[0.1.3]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.2...0.1.3
 [0.1.2]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.1...0.1.2
 [0.1.1]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.0...0.1.1
 [0.1.0]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/tags/release%2F0.1.0
