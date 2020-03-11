@@ -32,6 +32,18 @@ test:tests:
     - pip install tox
     - make tests
 
+test:coverage:
+  stage: test
+  only:
+    - master
+  before_script:
+    - apt update
+    - apt install -y nodejs npm pandoc
+  script:
+    - pip install tox
+    - make coverage
+  coverage: '/^TOTAL.+?(\S+\%)$/'
+
 publish-docker:
   stage: pre-publish
   image: docker

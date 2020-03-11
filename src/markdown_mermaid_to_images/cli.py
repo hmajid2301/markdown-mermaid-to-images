@@ -60,7 +60,7 @@ logger = logging.getLogger(__name__)
     "-l",
     default="INFO",
     type=click.Choice(["DEBUG", "INFO", "ERROR"]),
-    help="Path to folder where to save the new markdown files.",
+    help="Log level for the script.",
 )
 def cli(file, folder, ignore, output, log_level):
     """Exports mermaid diagrams in Markdown documents as images.."""

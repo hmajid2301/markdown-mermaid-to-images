@@ -41,8 +41,7 @@ Options:
   -o, --output PATH               Path to folder where to save the new
                                   markdown files.  [required]
   -l, --log-level                 [DEBUG|INFO|ERROR]
-                                  Path to folder where to save the new
-                                  markdown files.
+                                  Log level for the script.
   --help                          Show this message and exit.
 
 .. code-block:: bash
