@@ -55,8 +55,8 @@ publish-docker:
 
 publish-readme:hub:
   stage: pre-publish
-  # only:
-  #   - /^release/.*$/
+  only:
+    - /^release/.*$/
   image:
     name: registry.gitlab.com/hmajid2301/dockerhub-descriptions-updater
     entrypoint: [""]
