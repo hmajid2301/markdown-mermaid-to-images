@@ -131,3 +131,8 @@ Changelog
 =========
 
 You can find the `changelog here <https://gitlab.com/hmajid2301/markdown-mermaid-to-images/blob/master/CHANGELOG.md>`_.
+
+Appendix
+========
+
+Docker Image `inspired by sc250024 <https://github.com/sc250024/docker-mermaid-cli>`_
