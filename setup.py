@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="markdown-mermaid-to-images",
-    version="0.1.1",
+    version="0.1.2",
     description="Exports mermaid diagrams in Markdown documents as images.",
     long_description=open("README.rst").read(),
     long_description_content_type="text/x-rst",
