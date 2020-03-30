@@ -19,6 +19,6 @@ RUN apk update && apk upgrade && \
     pip3 install dist/* && \
     npm install puppeteer@1.8.0 && \ 
     npm install --only=prod && \
-    ln -sf /data/node_modules/mermaid.cli/index.bundle.js /usr/local/bin/mmdc && \
+    ln -sf /data/node_modules/@mermaid-js/mermaid-cli/index.bundle.js /usr/local/bin/mmdc && \
     rm -r dist/ && \
     rm -rf /tmp/* /var/cache/apk/

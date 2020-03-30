@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4] - 2020-03-30
+### Changed
+- Using the official mermaid cli tool instead of the other version, was causing various bugs related to creating images.
+
 ## [0.1.3] - 2020-03-11
 ### Fixed
 - When running in Docker container, trims image this was due to version of chromium being installed (80) now using 72.
@@ -30,7 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial Release.
 
-[Unreleased]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.3...master
+[Unreleased]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.4...master
+[0.1.4]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.4...0.1.3
 [0.1.3]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.2...0.1.3
 [0.1.2]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.1...0.1.2
 [0.1.1]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.0...0.1.1
