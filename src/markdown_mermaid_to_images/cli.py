@@ -56,11 +56,7 @@ logger = logging.getLogger(__name__)
     help="Path to folder where to save the new markdown files.",
 )
 @click.option(
-    "--log-level",
-    "-l",
-    default="INFO",
-    type=click.Choice(["DEBUG", "INFO", "ERROR"]),
-    help="Log level for the script.",
+    "--log-level", "-l", default="INFO", type=click.Choice(["DEBUG", "INFO", "ERROR"]), help="Log level for the script."
 )
 def cli(file, folder, ignore, output, log_level):
     """Exports mermaid diagrams in Markdown documents as images.."""
@@ -288,7 +284,7 @@ def save_new_file(doc, new_file_name):
         contents = temp_file.getvalue()
 
     try:
-        pypandoc.convert_text(contents, "markdown", "json", outputfile=new_file_name)
+        pypandoc.convert_text(contents, "markdown_github", "json", outputfile=new_file_name)
     except OSError as e:
         logger.error(f"Failed to save file, check permissions. {e}.")
         sys.exit(1)

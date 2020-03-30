@@ -1,4 +1,11 @@
 black==19.3b0
-click==7.0
 flake8==3.7.7
+flake8-blind-except==0.1.1
+flake8-builtins==1.4.2
+flake8-colors==0.1.6
+flake8-logging-format==0.6.0
+ipython==7.13.0
+pytest==5.3.5
+pytest-mock==2.0.0
+rope==0.16.0
 tox==3.9.0

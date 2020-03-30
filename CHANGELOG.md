@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.1.5] - 2020-03-30
+### Fixed
+- When converting to markdown using the wrong format, specify `github` style markdown to get correct markdown tables.
 
 ## [0.1.4] - 2020-03-30
 ### Changed
@@ -34,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial Release.
 
-[Unreleased]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.4...master
+[Unreleased]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.5...master
+[0.1.5]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.5...0.1.4
 [0.1.4]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.4...0.1.3
 [0.1.3]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.2...0.1.3
 [0.1.2]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.1...0.1.2

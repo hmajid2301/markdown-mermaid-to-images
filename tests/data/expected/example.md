@@ -20,7 +20,7 @@ Heading
 
 ### Another Heading
 
-``` {.json}
+``` json
 {
   "hello": "bye"
 }
