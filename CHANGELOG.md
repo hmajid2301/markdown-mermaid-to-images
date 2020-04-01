@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.2.0] - 2020-04-1
+### Added
+- Versions to `cli.py` and `Dockerfile`.
+- Cleanup output folder before tests run, else they will fail.
+
+### Changed
+- Installs `node_modules`, mermaid-cli, in the users home dir `(~)` so that we know it can always be accessed.
+- Docker image with an `ENTRYPOINT` to make it easier for people to use script in docker one liner.
+
+### Fixed
+- Needed to run script in same folder as `package.json`. Now you can run it from anywhere.
+
+### Removed
+- `package*.json` files, we don't need to rely on them.
+
 ## [0.1.5] - 2020-03-30
 ### Fixed
 - When converting to markdown using the wrong format, specify `github` style markdown to get correct markdown tables.
@@ -37,7 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial Release.
 
-[Unreleased]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.5...master
+[Unreleased]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.2.0...master
+[0.2.0]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.2.0...0.1.5
 [0.1.5]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.5...0.1.4
 [0.1.4]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.4...0.1.3
 [0.1.3]: https://gitlab.com/hmajid2301/markdown-mermaid-to-images/-/compare/release%2F0.1.2...0.1.3

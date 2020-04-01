@@ -1,3 +1,5 @@
+__VERSION__ = "0.2.0"
+
 # -*- coding: utf-8 -*-
 r"""Exports mermaid diagrams in Markdown documents as images.
 
@@ -123,13 +125,13 @@ def install_mermaid_cli():
 
     """
     exists = which("mmdc") is not None
-    node_mermaid_path = "./node_modules/.bin/mmdc"
-    exists = exists or os.path.exists(node_mermaid_path)
-
     if not exists:
         logger.info("Installing mermaid-cli.")
+        default_mmdc_installation_location = os.path.expanduser("~")
         try:
-            subprocess.check_output(["npm install"], shell=True)
+            subprocess.check_output(
+                [f"npm install --prefix {default_mmdc_installation_location} @mermaid-js/mermaid-cli@8.4.8"], shell=True
+            )
         except subprocess.CalledProcessError as e:
             logger.error(f"Failed to install mermaid-cli, using 'npm install'. Check 'node and npm' are installed. {e}")
             sys.exit(1)
@@ -242,11 +244,8 @@ def export_mermaid_blocks(elem, doc, output):
         if os.path.isfile("/usr/bin/chromium-browser"):
             puppeteer = "-p /data/puppeteer.json"
 
-        mmdc = "mmdc"
-        mmdc_path = os.path.join(os.getcwd(), "node_modules", ".bin", "mmdc")
-        if os.path.isfile(mmdc_path):
-            mmdc = "npm run export_image --"
-
+        mmdc_default_installation = f"{os.path.expanduser('~')}/node_modules/.bin/mmdc"
+        mmdc = "mmdc" if which("mmdc") else mmdc_default_installation
         command = [f"{mmdc} -i input.mmd -o {output_path} {puppeteer}"]
         mermaid_output = subprocess.check_output(command, shell=True)
         logger.info(mermaid_output)

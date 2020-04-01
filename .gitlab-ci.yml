@@ -13,18 +13,24 @@ stages:
 
 test:lint:
   stage: test
+  except:
+    - tags
   script:
     - pip install tox
     - make lint
 
 test:code-formatter:
   stage: test
+  except:
+    - tags
   script:
     - pip install tox
     - make code-formatter-check
 
-test:tests:
+test:unit:
   stage: test
+  except:
+    - tags
   before_script:
     - apt update
     - apt install -y nodejs npm pandoc
