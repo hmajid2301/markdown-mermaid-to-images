@@ -61,14 +61,8 @@ publish-docker:
   script:
     - export VERSION_TAG=$(cat setup.py | grep version | head -1 | awk -F= '{ print $2 }' | sed 's/[",]//g' | tr -d "'")
     - export VERSION_TAG=1
-    - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_BUILD_TOKEN}
     - docker pull ${CI_REGISTRY_IMAGE}:${VERSION_TAG} && echo "Tag ${VERSION_TAG} already exists" && exit 1 || true
     - docker build -t ${CI_REGISTRY_IMAGE}:latest -t ${CI_REGISTRY_IMAGE}:${VERSION_TAG}  .
-    - docker push ${CI_REGISTRY_IMAGE}:latest
-    - docker push ${CI_REGISTRY_IMAGE}:${VERSION_TAG}
-    - docker login -u hmajid2301 -p ${DOCKER_PASSWORD}
-    - export IMAGE_NAME="hmajid2301/markdown-mermaid-to-images"
-    - docker build -t ${IMAGE_NAME}:latest -t ${IMAGE_NAME}:${VERSION_TAG}  .
     # - docker push ${IMAGE_NAME}:latest
     # - docker push ${IMAGE_NAME}:${VERSION_TAG}
 
