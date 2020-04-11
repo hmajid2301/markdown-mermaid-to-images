@@ -52,7 +52,7 @@ test:coverage:
 
 publish-docker:
   stage: test
-  image: docker
+  image: docker:dind
   # only:
   #   - /^release/.*$/
   before_script:
