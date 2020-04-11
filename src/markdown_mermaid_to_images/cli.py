@@ -1,4 +1,4 @@
-__VERSION__ = "0.2.0"
+__VERSION__ = "0.2.1"
 
 # -*- coding: utf-8 -*-
 r"""Exports mermaid diagrams in Markdown documents as images.
@@ -130,7 +130,9 @@ def install_mermaid_cli():
         default_mmdc_installation_location = os.path.expanduser("~")
         try:
             subprocess.check_output(
-                [f"npm install --prefix {default_mmdc_installation_location} @mermaid-js/mermaid-cli@8.4.8"], shell=True
+                [f"npm install --prefix {default_mmdc_installation_location} @mermaid-js/mermaid-cli@8.9.1"],
+                shell=True,
+                timeout=600,
             )
         except subprocess.CalledProcessError as e:
             logger.error(f"Failed to install mermaid-cli, using 'npm install'. Check 'node and npm' are installed. {e}")
@@ -247,7 +249,7 @@ def export_mermaid_blocks(elem, doc, output):
         mmdc_default_installation = f"{os.path.expanduser('~')}/node_modules/.bin/mmdc"
         mmdc = "mmdc" if which("mmdc") else mmdc_default_installation
         command = [f"{mmdc} -i input.mmd -o {output_path} {puppeteer}"]
-        mermaid_output = subprocess.check_output(command, shell=True)
+        mermaid_output = subprocess.check_output(command, shell=True, timeout=180)
         logger.info(mermaid_output)
         os.remove("input.mmd")
         doc.mermaid[elem.index] = output_name
