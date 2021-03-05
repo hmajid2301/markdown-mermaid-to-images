@@ -22,11 +22,12 @@ RUN apk update && \
     python3 \
     py3-pip && \
     pip3 install dist/* && \
-    npm install @mermaid-js/mermaid-cli@8.8.3-2 && \
+    npm install @mermaid-js/mermaid-cli@8.9.1 && \
     mkdir input output && \
     ln -sf /data/node_modules/@mermaid-js/mermaid-cli/index.bundle.js /usr/local/bin/mmdc && \
     rm -r dist/ && \
     rm -rf /tmp/* /var/cache/apk/
 
+ENTRYPOINT /bin/ash
 
-CMD [ "markdown_mermaid_to_images", "-f", "/data/input", "-o", "/data/output"]
+# CMD [ "markdown_mermaid_to_images", "-f", "/data/input", "-o", "/data/output"]
