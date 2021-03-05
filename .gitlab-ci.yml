@@ -64,8 +64,8 @@ publish-docker:
     - export VERSION_TAG=1
     - docker pull ${CI_REGISTRY_IMAGE}:${VERSION_TAG} && echo "Tag ${VERSION_TAG} already exists" && exit 1 || true
     - docker build -t ${CI_REGISTRY_IMAGE}:latest -t ${CI_REGISTRY_IMAGE}:${VERSION_TAG}  .
-    - docker push ${IMAGE_NAME}:latest
-    - docker push ${IMAGE_NAME}:${VERSION_TAG}
+    # - docker push ${IMAGE_NAME}:latest
+    # - docker push ${IMAGE_NAME}:${VERSION_TAG}
 
 publish-readme:hub:
   stage: pre-publish
