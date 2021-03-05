@@ -11,32 +11,32 @@ stages:
   - pre-publish
   - publish
 
-# test:lint:
-#   stage: test
-#   except:
-#     - tags
-#   script:
-#     - pip install tox
-#     - make lint
+test:lint:
+  stage: test
+  except:
+    - tags
+  script:
+    - pip install tox
+    - make lint
 
-# test:code-formatter:
-#   stage: test
-#   except:
-#     - tags
-#   script:
-#     - pip install tox
-#     - make code-formatter-check
+test:code-formatter:
+  stage: test
+  except:
+    - tags
+  script:
+    - pip install tox
+    - make code-formatter-check
 
-# test:unit:
-#   stage: test
-#   except:
-#     - tags
-#   before_script:
-#     - apt update
-#     - apt install -y nodejs npm pandoc
-#   script:
-#     - pip install tox
-#     - make tests
+test:unit:
+  stage: test
+  except:
+    - tags
+  before_script:
+    - apt update
+    - apt install -y nodejs npm pandoc
+  script:
+    - pip install tox
+    - make tests
 
 test:coverage:
   stage: test
@@ -53,8 +53,8 @@ test:coverage:
 publish-docker:
   stage: pre-publish
   image: docker
-  # only:
-  #   - /^release/.*$/
+  only:
+    - /^release/.*$/
   before_script:
     - apk add python3-dev py3-setuptools
     - python3 setup.py sdist
@@ -64,8 +64,8 @@ publish-docker:
     - export VERSION_TAG=1
     - docker pull ${CI_REGISTRY_IMAGE}:${VERSION_TAG} && echo "Tag ${VERSION_TAG} already exists" && exit 1 || true
     - docker build -t ${CI_REGISTRY_IMAGE}:latest -t ${CI_REGISTRY_IMAGE}:${VERSION_TAG}  .
-    # - docker push ${IMAGE_NAME}:latest
-    # - docker push ${IMAGE_NAME}:${VERSION_TAG}
+    - docker push ${IMAGE_NAME}:latest
+    - docker push ${IMAGE_NAME}:${VERSION_TAG}
 
 publish-readme:hub:
   stage: pre-publish
