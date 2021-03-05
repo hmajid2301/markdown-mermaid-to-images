@@ -3,8 +3,8 @@ image: python:3.7
 variables:
   DOCKER_DRIVER: overlay2
 
-# services:
-#   - docker:dind
+services:
+  - docker:dind
 
 stages:
   - test
@@ -52,7 +52,7 @@ test:coverage:
 
 publish-docker:
   stage: test
-  image: docker:dind
+  image: pre-publish
   only:
     - /^release/.*$/
   before_script:
