@@ -56,7 +56,7 @@ publish-docker:
   # only:
   #   - /^release/.*$/
   before_script:
-    - apk add python3-dev python3
+    - apk add python3-dev py3-setuptools
     - python3 setup.py sdist
   script:
     - dockerd &
