@@ -11,32 +11,32 @@ stages:
   - pre-publish
   - publish
 
-test:lint:
-  stage: test
-  except:
-    - tags
-  script:
-    - pip install tox
-    - make lint
+# test:lint:
+#   stage: test
+#   except:
+#     - tags
+#   script:
+#     - pip install tox
+#     - make lint
 
-test:code-formatter:
-  stage: test
-  except:
-    - tags
-  script:
-    - pip install tox
-    - make code-formatter-check
+# test:code-formatter:
+#   stage: test
+#   except:
+#     - tags
+#   script:
+#     - pip install tox
+#     - make code-formatter-check
 
-test:unit:
-  stage: test
-  except:
-    - tags
-  before_script:
-    - apt update
-    - apt install -y nodejs npm pandoc
-  script:
-    - pip install tox
-    - make tests
+# test:unit:
+#   stage: test
+#   except:
+#     - tags
+#   before_script:
+#     - apt update
+#     - apt install -y nodejs npm pandoc
+#   script:
+#     - pip install tox
+#     - make tests
 
 test:coverage:
   stage: test
@@ -56,7 +56,7 @@ publish-docker:
   # only:
   #   - /^release/.*$/
   before_script:
-    - apk add python3-dev
+    - apk add python3-dev python3-setuptools
     - python3 setup.py sdist
   script:
     - dockerd &
