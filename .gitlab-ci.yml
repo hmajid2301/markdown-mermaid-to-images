@@ -51,8 +51,8 @@ test:coverage:
   coverage: '/^TOTAL.+?(\S+\%)$/'
 
 publish-docker:
-  stage: test
-  image: pre-publish
+  stage: pre-publish
+  image: docker
   # only:
   #   - /^release/.*$/
   before_script:
