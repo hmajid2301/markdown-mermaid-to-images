@@ -236,10 +236,17 @@ def export_mermaid_blocks(elem, doc, output):
 
     """
     if isinstance(elem, panflute.CodeBlock) and "mermaid" in elem.classes:
-        with open("input.mmd", "w+") as tmp:
-            tmp.write(elem.text)
+        output_text = elem.text
+        image_name = uuid.uuid4().hex
+        first_line = elem.text.split("\n")[0]
+        if first_line.startswith("""%% Image: """):
+            output_text = elem.text.replace(first_line, "")
+            image_name = first_line.replace("""%% Image: """, "").strip()
 
-        output_name = f"{uuid.uuid4().hex}.png"
+        with open("input.mmd", "w+") as tmp:
+            tmp.write(output_text)
+
+        output_name = f"{image_name}.png"
         output_path = os.path.join(output, output_name)
 
         puppeteer = ""
