@@ -75,6 +75,7 @@ must be surrounded by three ` and have the class ``mermaid``.
   ## Heading
 
   ```mermaid
+  %% Image: image_name
   graph LR;
     A --> B;
   ```
@@ -104,7 +105,7 @@ This will then get converted into a file that looks like
   Heading
   -------
 
-  ![Image](a18fcc0f6bf14950b5115b22752471cc.png)
+  ![Image](image_name.png)
 
   > INFO: Info
 
