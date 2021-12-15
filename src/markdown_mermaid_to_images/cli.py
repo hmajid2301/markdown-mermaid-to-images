@@ -1,4 +1,4 @@
-__VERSION__ = "0.2.1"
+__VERSION__ = "0.3.0"
 
 # -*- coding: utf-8 -*-
 r"""Exports mermaid diagrams in Markdown documents as images.

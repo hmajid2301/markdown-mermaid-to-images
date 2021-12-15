@@ -1,5 +1,5 @@
 FROM pandoc/core:2.10
-LABEL VERSION="0.2.1"
+LABEL VERSION="0.3.0"
 LABEL MAINTAINER="Haseeb Majid<hello@haseebmajid.dev>"
 
 COPY puppeteer.json ./
